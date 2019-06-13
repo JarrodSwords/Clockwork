@@ -3,11 +3,11 @@
 }
 
 <div id="current-time-queries">
-    <ol reversed>
-        <li v-for="query in queries.slice().reverse()">
-            <p><strong>Client IP:</strong>{{ query.clientIp }}</p>
-            <p><strong>Time:</strong>{{ query.time }}</p>
-            <p><strong>UTC Time:</strong>{{ query.utcTime }}</p>
+    <ol class="list-group"
+        reversed>
+        <li v-for="query in queries.slice().reverse()"
+            class="list-group-item">
+            @Html.Partial("_CurrentTimeQueryView")
         </li>
     </ol>
 </div>

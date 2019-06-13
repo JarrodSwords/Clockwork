@@ -1,6 +1,10 @@
 ﻿<h2>AWH Clockwork Project @ViewData["Version"] on @ViewData["Runtime"]!</h2>
 
-<button type="submit" onclick="getCurrentTime()">Get the time</button>
+<button type="submit"
+        class="btn btn-primary"
+        onclick="getCurrentTime()">
+    Get the time
+</button>
 
 @Html.Partial("_CurrentTimeQueriesView")
 
