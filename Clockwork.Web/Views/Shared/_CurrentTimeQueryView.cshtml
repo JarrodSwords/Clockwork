@@ -2,42 +2,53 @@
     ViewBag.Title = "_CurrentTimeQueryView";
 }
 
-<div>
+<div class="row">
     <span class="
           col-4
+          col-md-2
+          col-lg-1
           d-inline-block
           font-weight-bold
-          text-right
-          ">
+          text-right">
         Client IP:
     </span>
-    <span>
+    <span class="
+          col-8
+          col-md-2
+          col-lg-1
+          d-inline-block">
         {{ query.clientIp }}
     </span>
-</div>
-<div>
     <span class="
           col-4
+          col-md-2
+          col-lg-1
           d-inline-block
           font-weight-bold
-          text-right
-          ">
+          text-right">
         Time:
     </span>
-    <span>
+    <span class="
+          col-8
+          col-md-6
+          col-lg-2
+          d-inline-block">
         {{ query.time }}
     </span>
-</div>
-<div>
     <span class="
           col-4
+          col-md-2
+          col-lg-1
           d-inline-block
           font-weight-bold
-          text-right
-          ">
+          text-right">
         UTC Time:
     </span>
-    <span>
+    <span class="
+          col-8
+          col-md-10
+          col-lg-2
+          d-inline-block">
         {{ query.utcTime }}
     </span>
 </div>
