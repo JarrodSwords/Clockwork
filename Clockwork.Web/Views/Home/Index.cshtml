@@ -2,27 +2,10 @@
 
 <button type="submit" onclick="getCurrentTime()">Get the time</button>
 
-<div id="current-time-queries">
-    <ol>
-        <li v-for="query in currentTimeQueries">
-            <p><strong>Client IP:</strong>{{ query.clientIp }}</p>
-            <p><strong>Time:</strong>{{ query.time }}</p>
-            <p><strong>UTC Time:</strong>{{ query.utcTime }}</p>
-        </li>
-    </ol>
-</div>
+@Html.Partial("_CurrentTimeQueriesView")
 
 <script src="https://cdn.jsdelivr.net/npm/vue@2.5.22/dist/vue.js"></script>
 <script src="~/Scripts/xhttprequest.js"></script>
 <script src="~/Scripts/models.js"></script>
 <script src="~/Scripts/services/currentTimeQueriesService.js"></script>
-<script type="text/javascript">
-    var app = new Vue({
-        el: "#current-time-queries",
-        data: {
-            currentTimeQueries: []
-        }
-    });
-
-    Clockwork.CurrentTimeQueriesService.getCurrentTimeQueries();
-</script>
+<script src="~/Scripts/apps/currentTimeQueriesApp.js"></script>
