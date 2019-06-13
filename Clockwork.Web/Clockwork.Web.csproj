@@ -331,6 +331,7 @@
     <Content Include="Scripts\jquery-3.0.0.slim.js" />
     <Content Include="Scripts\jquery-3.0.0.slim.min.js" />
     <Content Include="Scripts\models\current-time-query.js" />
+    <Content Include="Scripts\models\timezone-option.js" />
     <Content Include="Scripts\moment-with-locales.js" />
     <Content Include="Scripts\moment-with-locales.min.js" />
     <Content Include="Scripts\moment.js" />
@@ -339,6 +340,7 @@
     <Content Include="Scripts\popper-utils.min.js" />
     <Content Include="Scripts\popper.js" />
     <Content Include="Scripts\popper.min.js" />
+    <Content Include="Scripts\services\timezones-service.js" />
     <Content Include="Scripts\services\currentTimeQueriesService.js" />
     <Content Include="Scripts\umd\popper-utils.js" />
     <Content Include="Scripts\umd\popper-utils.min.js" />
@@ -364,6 +366,7 @@
     <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Views\Shared\_CurrentTimeQueryView.cshtml" />
     <Content Include="Views\Shared\_HeaderView.cshtml" />
+    <Content Include="Views\Shared\_TimezoneDropdownView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="node_modules\.yarn-integrity" />

@@ -1,7 +1,9 @@
 ﻿var app = new Vue({
-    el: "#current-time-queries",
+    el: "#app",
     data: {
-        queries: []
+        queries: [],
+        timezoneOptions: [],
+        selectedTimezone: null
     }
 });
 
@@ -16,8 +18,15 @@ var appendQuery = data => {
     app.queries.push(query);
 };
 
+var populateTimezoneOptions = data => {
+    data.forEach(timezone => {
+        app.timezoneOptions.push(new TimezoneOption(timezone));
+    });
+}
+
 var getCurrentTime = () => {
     Clockwork.CurrentTimeQueriesService.getCurrentTime(appendQuery);
 }
 
 Clockwork.CurrentTimeQueriesService.getCurrentTimeQueries(populateQueries);
+Clockwork.TimezonesService.getTimezones(populateTimezoneOptions);
