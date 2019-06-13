@@ -29,7 +29,7 @@
         this.clientIp = clientIp;
         this.utcTime = utcTime;
     }
-    
+
     var makeRequest = (target, callback, httpMethod) => {
         var xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function () {
@@ -41,7 +41,7 @@
         xhttp.open(httpMethod || "GET", target, true);
         xhttp.setRequestHeader("Content-type", "application/json");
         xhttp.send();
-        }
+    }
 
     var getCurrentTime = () => {
         makeRequest("http://127.0.0.1:5000/api/currenttime", data => {
@@ -49,4 +49,14 @@
             app.currentTimeQueries.push(query);
         })
     }
+
+    var getCurrentTimeQueries = () => {
+        makeRequest("http://127.0.0.1:5000/api/currenttimequeries", data => {
+            data.forEach(query => {
+                app.currentTimeQueries.push(new CurrentTimeQuery(query));
+            });
+        })
+    }
+
+    getCurrentTimeQueries();
 </script>
