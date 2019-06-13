@@ -296,6 +296,7 @@
     <Content Include="node_modules\vue\src\sfc\parser.js" />
     <Content Include="node_modules\vue\src\shared\constants.js" />
     <Content Include="node_modules\vue\src\shared\util.js" />
+    <Content Include="Scripts\models.js" />
     <Content Include="Scripts\services\currentTimeQueriesService.js" />
     <Content Include="Scripts\xhttprequest.js" />
     <Content Include="Views\Web.config" />
