@@ -1,19 +1,49 @@
-﻿<script>
+﻿<h2>AWH Clockwork Project @ViewData["Version"] on @ViewData["Runtime"]!</h2>
+
+<button type="submit" onclick="getCurrentTime()">Get the time</button>
+
+<p id="output"></p>
+
+<div id="current-time-queries">
+    <ol>
+        <li v-for="query in currentTimeQueries">
+            <p><strong>Client IP:</strong>{{ query.clientIp }}</p>
+            <p><strong>Time:</strong>{{ query.time }}</p>
+            <p><strong>UTC Time:</strong>{{ query.utcTime }}</p>
+        </li>
+    </ol>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.22/dist/vue.js"></script>
+<script type="text/javascript">
+    var app = new Vue({
+        el: "#current-time-queries",
+        data: {
+            currentTimeQueries: []
+        }
+    });
+
+    function CurrentTimeQuery({ currentTimeQueryId, time, clientIp, utcTime }) {
+        this.id = currentTimeQueryId;
+        this.time = time;
+        this.clientIp = clientIp;
+        this.utcTime = utcTime;
+    }
+
     var getCurrentTime = () => {
         var xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {
                 document.getElementById("output").innerHTML = this.responseText;
+
+                var obj = JSON.parse(this.responseText);
+                var query = new CurrentTimeQuery(obj);
+                app.currentTimeQueries.push(query);
             }
         };
         xhttp.open("GET", "http://127.0.0.1:5000/api/currenttime", true);
         xhttp.setRequestHeader("Content-type", "application/json");
         xhttp.send();
     }
+
 </script>
-
-<h2>AWH Clockwork Project @ViewData["Version"] on @ViewData["Runtime"]!</h2>
-
-<button type="submit" onclick="getCurrentTime()">Get the time</button>
-
-<p id="output"></p>
