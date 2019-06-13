@@ -1,0 +1,20 @@
+﻿body {
+    background-color: #eee;
+    font-family: Lato;
+}
+
+#awh-header {
+    display: flex;
+    justify-content: space-between;
+    overflow: auto;
+    text-transform: uppercase;
+    padding: 0.8em;
+    margin-bottom: 0.5em;
+    text-align: right;
+    background-color: #2E5783;
+    color: #fff;
+}
+
+#awh-header-content {
+    align-self: flex-end;
+}

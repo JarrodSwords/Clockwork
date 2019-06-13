@@ -1,11 +1,27 @@
-﻿<h2>AWH Clockwork Project @ViewData["Version"] on @ViewData["Runtime"]!</h2>
+﻿<button type="submit"
+        class="btn btn-primary"
+        onclick="getCurrentTime()">
+    Get the time
+</button>
 
-<button type="submit" onclick="getCurrentTime()">Get the time</button>
+<hr />
 
-@Html.Partial("_CurrentTimeQueriesView")
+<div id="current-time-queries"
+     class="card">
+    <h4 class="card-header text-uppercase">
+        Current Time Requests
+    </h4>
+    <ol class="list-group list-group-flush"
+        reversed>
+        <li v-for="query in queries.slice().reverse()"
+            class="list-group-item">
+            @Html.Partial("_CurrentTimeQueryView")
+        </li>
+    </ol>
+</div>
 
 <script src="https://cdn.jsdelivr.net/npm/vue@2.5.22/dist/vue.js"></script>
 <script src="~/Scripts/xhttprequest.js"></script>
-<script src="~/Scripts/models.js"></script>
+<script src="~/Scripts/models/current-time-query.js"></script>
 <script src="~/Scripts/services/currentTimeQueriesService.js"></script>
 <script src="~/Scripts/apps/currentTimeQueriesApp.js"></script>
