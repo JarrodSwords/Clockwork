@@ -1,4 +1,4 @@
-﻿function TimezoneOption({ Id, DisplayName, StandardName, DaylightName }) {
-    this.text = DisplayName;
-    this.value = Id;
+﻿function TimezoneOption({ id, displayName, standardName, daylightName }) {
+    this.text = displayName;
+    this.value = id;
 }

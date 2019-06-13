@@ -1,6 +1,7 @@
 ﻿using System;
+using System.Linq;
 using Microsoft.AspNetCore.Mvc;
-using Clockwork.API.Models;
+using System.Collections.Generic;
 
 namespace Clockwork.API.Controllers
 {
@@ -11,7 +12,11 @@ namespace Clockwork.API.Controllers
         [HttpGet]
         public IActionResult Get()
         {
-            return Ok(TimeZoneInfo.GetSystemTimeZones());
+            var timezones = TimeZoneInfo.GetSystemTimeZones()
+                .Select(x => PrimitiveMapper.Map(x))
+                .ToList();
+
+            return Ok(timezones);
         }
     }
 }
