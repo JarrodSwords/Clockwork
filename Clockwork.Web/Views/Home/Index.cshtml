@@ -2,8 +2,6 @@
 
 <button type="submit" onclick="getCurrentTime()">Get the time</button>
 
-<p id="output"></p>
-
 <div id="current-time-queries">
     <ol>
         <li v-for="query in currentTimeQueries">
@@ -15,6 +13,7 @@
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/vue@2.5.22/dist/vue.js"></script>
+<script src="~/Scripts/services/currentTimeQueriesService.js"></script>
 <script type="text/javascript">
     var app = new Vue({
         el: "#current-time-queries",
@@ -30,7 +29,7 @@
         this.utcTime = utcTime;
     }
 
-    var makeRequest = (target, callback, httpMethod) => {
+    var makeRequest = (target, callback = () => { }, httpMethod) => {
         var xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {
@@ -41,22 +40,7 @@
         xhttp.open(httpMethod || "GET", target, true);
         xhttp.setRequestHeader("Content-type", "application/json");
         xhttp.send();
-    }
+    };
 
-    var getCurrentTime = () => {
-        makeRequest("http://127.0.0.1:5000/api/currenttime", data => {
-            var query = new CurrentTimeQuery(data);
-            app.currentTimeQueries.push(query);
-        })
-    }
-
-    var getCurrentTimeQueries = () => {
-        makeRequest("http://127.0.0.1:5000/api/currenttimequeries", data => {
-            data.forEach(query => {
-                app.currentTimeQueries.push(new CurrentTimeQuery(query));
-            });
-        })
-    }
-
-    getCurrentTimeQueries();
+    Clockwork.CurrentTimeQueriesService.getCurrentTimeQueries();
 </script>
