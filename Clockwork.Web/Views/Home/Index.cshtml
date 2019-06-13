@@ -29,21 +29,24 @@
         this.clientIp = clientIp;
         this.utcTime = utcTime;
     }
-
-    var getCurrentTime = () => {
+    
+    var makeRequest = (target, callback, httpMethod) => {
         var xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {
-                document.getElementById("output").innerHTML = this.responseText;
-
-                var obj = JSON.parse(this.responseText);
-                var query = new CurrentTimeQuery(obj);
-                app.currentTimeQueries.push(query);
+                var result = JSON.parse(this.responseText);
+                callback(result);
             }
         };
-        xhttp.open("GET", "http://127.0.0.1:5000/api/currenttime", true);
+        xhttp.open(httpMethod || "GET", target, true);
         xhttp.setRequestHeader("Content-type", "application/json");
         xhttp.send();
-    }
+        }
 
+    var getCurrentTime = () => {
+        makeRequest("http://127.0.0.1:5000/api/currenttime", data => {
+            var query = new CurrentTimeQuery(data);
+            app.currentTimeQueries.push(query);
+        })
+    }
 </script>
