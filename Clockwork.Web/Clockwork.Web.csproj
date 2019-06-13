@@ -297,6 +297,7 @@
     <Content Include="node_modules\vue\src\shared\constants.js" />
     <Content Include="node_modules\vue\src\shared\util.js" />
     <Content Include="Scripts\services\currentTimeQueriesService.js" />
+    <Content Include="Scripts\xhttprequest.js" />
     <Content Include="Views\Web.config" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
