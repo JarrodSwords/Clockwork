@@ -1,7 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
+using Clockwork.API.Domain;
+using Clockwork.API.Implementations;
+using Clockwork.API.Services;
+using Clockwork.API.Storage;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -25,6 +26,12 @@ namespace Clockwork.API
         {
             services.AddCors();
             services.AddMvc();
+
+            // register dependencies
+            services.AddTransient<IMapper, PrimitiveMapper>();
+            services.AddTransient<ICurrentTimeQueryRepository, EfCurrentTimeQueryRepository>();
+            services.AddTransient<ICurrentTimeQueryService, BasicCurrentTimeQueryService>();
+            services.AddTransient<ITimeZoneInfoService, BasicTimeZoneInfoService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

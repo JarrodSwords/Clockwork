@@ -1,27 +1,49 @@
-﻿<button type="submit"
-        class="btn btn-primary"
-        onclick="getCurrentTime()">
-    Get the time
-</button>
+﻿<div id="app">
+    <div class="text-right">
+        <button type="submit"
+                class="btn btn-primary"
+                onclick="getCurrentTime()">
+            Get time
+        </button>
+    </div>
 
-<hr />
+    <hr />
 
-<div id="current-time-queries"
-     class="card">
-    <h4 class="card-header text-uppercase">
-        Current Time Requests
-    </h4>
-    <ol class="list-group list-group-flush"
-        reversed>
-        <li v-for="query in queries.slice().reverse()"
-            class="list-group-item">
-            @Html.Partial("_CurrentTimeQueryView")
-        </li>
-    </ol>
+    <div class="text-right">
+        <select v-model="selectedTimezone">
+            <option v-for="option in timezoneOptions"
+                    v-bind:value="option.value">
+                {{ option.text }}
+            </option>
+        </select>
+        <button type="submit"
+                class="btn btn-primary"
+                onclick="getCurrentTimeForTimezone()">
+            Get time for timezone
+        </button>
+    </div>
+
+    <hr />
+
+    <div id="current-time-queries"
+         class="card">
+        <h4 class="card-header text-uppercase">
+            Current Time Requests
+        </h4>
+        <ol class="list-group list-group-flush"
+            reversed>
+            <li v-for="query in queries.slice().reverse()"
+                class="list-group-item">
+                @Html.Partial("_CurrentTimeQueryView")
+            </li>
+        </ol>
+    </div>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/vue@2.5.22/dist/vue.js"></script>
 <script src="~/Scripts/xhttprequest.js"></script>
 <script src="~/Scripts/models/current-time-query.js"></script>
-<script src="~/Scripts/services/currentTimeQueriesService.js"></script>
-<script src="~/Scripts/apps/currentTimeQueriesApp.js"></script>
+<script src="~/Scripts/models/timezone-option.js"></script>
+<script src="~/Scripts/services/current-time-queries-service.js"></script>
+<script src="~/Scripts/services/timezones-service.js"></script>
+<script src="~/Scripts/apps/current-time-queries-app.js"></script>

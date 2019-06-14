@@ -18,3 +18,7 @@
 #awh-header-content {
     align-self: flex-end;
 }
+
+div.timezone {
+    background-color: #eee;
+}

@@ -14,7 +14,7 @@
     </span>
     <span class="
           col-8
-          col-md-2
+          col-md-10
           col-lg-1
           d-inline-block">
         {{ query.clientIp }}
@@ -30,7 +30,7 @@
     </span>
     <span class="
           col-8
-          col-md-6
+          col-md-4
           col-lg-2
           d-inline-block">
         {{ query.time }}
@@ -46,9 +46,45 @@
     </span>
     <span class="
           col-8
-          col-md-10
+          col-md-4
           col-lg-2
           d-inline-block">
         {{ query.utcTime }}
+    </span>
+</div>
+<hr v-if="query.timezoneId"/>
+<div v-if="query.timezoneId"
+     class="row timezone">
+    <span class="
+          col-4
+          col-md-2
+          col-lg-3
+          d-inline-block
+          font-weight-bold
+          text-right">
+        Time:
+    </span>
+    <span class="
+          col-8
+          col-md-4
+          col-lg-2
+          d-inline-block">
+        {{ query.convertedTime }}
+    </span>
+    <span class="
+          col-4
+          col-md-2
+          col-lg-1
+          d-inline-block
+          font-weight-bold
+          text-right">
+        Timezone:
+    </span>
+    <span class="
+          col-8
+          col-md-4
+          col-lg-6
+          d-inline-block">
+        {{ query.timezoneId }}
     </span>
 </div>

@@ -1,41 +1,37 @@
 ﻿using System;
 using Microsoft.AspNetCore.Mvc;
-using Clockwork.API.Models;
+using Clockwork.API.Domain;
+using Clockwork.API.Services;
 
 namespace Clockwork.API.Controllers
 {
     [Route("api/[controller]")]
     public class CurrentTimeController : Controller
     {
+        private readonly ICurrentTimeQueryService _currentTimeQueryService;
+
+        public CurrentTimeController(ICurrentTimeQueryService currentTimeQueryService)
+        {
+            _currentTimeQueryService = currentTimeQueryService;
+        }
+
         // GET api/currenttime
         [HttpGet]
         public IActionResult Get()
         {
-            var utcTime = DateTime.UtcNow;
-            var serverTime = DateTime.Now;
-            var ip = this.HttpContext.Connection.RemoteIpAddress.ToString();
-
-            var returnVal = new CurrentTimeQuery
-            {
-                UTCTime = utcTime,
-                ClientIp = ip,
-                Time = serverTime
-            };
-
-            using (var db = new ClockworkContext())
-            {
-                db.CurrentTimeQueries.Add(returnVal);
-                var count = db.SaveChanges();
-                Console.WriteLine("{0} records saved to database", count);
-
-                Console.WriteLine();
-                foreach (var CurrentTimeQuery in db.CurrentTimeQueries)
-                {
-                    Console.WriteLine(" - {0}", CurrentTimeQuery.UTCTime);
-                }
-            }
-
-            return Ok(returnVal);
+            var args = new GetCurrentTimeArgs { ClientIp = GetClientIp() };
+            return Ok(_currentTimeQueryService.GetCurrentTime(args));
         }
+
+        // POST api/currenttime
+        [HttpPost]
+        public IActionResult Post([FromBody] GetCurrentTimeArgs args)
+        {
+            args.ClientIp = GetClientIp();
+            return Ok(_currentTimeQueryService.GetCurrentTime(args));
+        }
+
+        private string GetClientIp() =>
+            this.HttpContext.Connection.RemoteIpAddress.ToString();
     }
 }

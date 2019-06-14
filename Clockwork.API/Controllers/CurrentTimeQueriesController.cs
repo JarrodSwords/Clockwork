@@ -1,4 +1,5 @@
-﻿using Clockwork.API.Models;
+﻿using Clockwork.API.Domain;
+using Clockwork.API.Services;
 using Microsoft.AspNetCore.Mvc;
 using System.Linq;
 
@@ -7,15 +8,18 @@ namespace Clockwork.API.Controllers
     [Route("api/[controller]")]
     public class CurrentTimeQueriesController : Controller
     {
+        private readonly ICurrentTimeQueryService _currentTimeQueryService;
+
+        public CurrentTimeQueriesController(ICurrentTimeQueryService currentTimeQueryService)
+        {
+            _currentTimeQueryService = currentTimeQueryService;
+        }
+
         // GET api/currenttimequeries
         [HttpGet]
         public IActionResult Get()
         {
-            using (var db = new ClockworkContext())
-            {
-                var apiRequests = db.CurrentTimeQueries.ToList();
-                return Ok(apiRequests);
-            }
+            return Ok(_currentTimeQueryService.GetAllRequests());
         }
     }
 }
