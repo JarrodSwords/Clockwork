@@ -5,12 +5,7 @@ Clockwork.TimezonesService = (() => {
         makeRequest("timezones", callback);
     };
 
-    var getServerTime = (timezoneId, callback) => {
-        makeRequest(`servertime/${timezoneId}`, callback);
-    };
-
     return {
-        getTimezones,
-        getServerTime
+        getTimezones
     };
 })();

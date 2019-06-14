@@ -1,6 +1,6 @@
 ﻿var CLOCKWORK_API_ROOT = "http://127.0.0.1:5000/api";
 
-var makeRequest = (target, callback = () => { }, httpMethod, apiRoot) => {
+var makeRequest = (target, callback = () => { }, httpMethod, apiRoot, body) => {
     apiRoot = apiRoot || CLOCKWORK_API_ROOT;
 
     var xhttp = new XMLHttpRequest();
@@ -12,5 +12,5 @@ var makeRequest = (target, callback = () => { }, httpMethod, apiRoot) => {
     };
     xhttp.open(httpMethod || "GET", `${apiRoot}/${target}`, true);
     xhttp.setRequestHeader("Content-type", "application/json");
-    xhttp.send();
+    xhttp.send(body);
 };

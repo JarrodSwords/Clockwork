@@ -301,7 +301,7 @@
     <Content Include="node_modules\vue\src\sfc\parser.js" />
     <Content Include="node_modules\vue\src\shared\constants.js" />
     <Content Include="node_modules\vue\src\shared\util.js" />
-    <Content Include="Scripts\apps\currentTimeQueriesApp.js" />
+    <Content Include="Scripts\apps\current-time-queries-app.js" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -341,7 +341,7 @@
     <Content Include="Scripts\popper.js" />
     <Content Include="Scripts\popper.min.js" />
     <Content Include="Scripts\services\timezones-service.js" />
-    <Content Include="Scripts\services\currentTimeQueriesService.js" />
+    <Content Include="Scripts\services\current-time-queries-service.js" />
     <Content Include="Scripts\umd\popper-utils.js" />
     <Content Include="Scripts\umd\popper-utils.min.js" />
     <Content Include="Scripts\umd\popper.js" />
@@ -366,7 +366,6 @@
     <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Views\Shared\_CurrentTimeQueryView.cshtml" />
     <Content Include="Views\Shared\_HeaderView.cshtml" />
-    <Content Include="Views\Shared\_TimezoneDropdownView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="node_modules\.yarn-integrity" />

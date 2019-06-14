@@ -19,8 +19,7 @@ namespace Clockwork.API.Controllers
         [HttpGet]
         public IActionResult Get()
         {
-            var requests = _currentTimeQueryService.GetAllRequests();
-            return Ok(requests);
+            return Ok(_currentTimeQueryService.GetAllRequests());
         }
     }
 }

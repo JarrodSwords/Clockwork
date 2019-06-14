@@ -23,11 +23,10 @@ namespace Clockwork.API.Controllers
         [HttpGet]
         public IActionResult Get()
         {
-            var timezones = _timeZoneInfoService.Get()
-                .Select(x => _mapper.Map(x))
-                .ToList();
+            var timeZoneDtos = _timeZoneInfoService.FetchAll()
+                .Select(x => _mapper.Map(x));
 
-            return Ok(timezones);
+            return Ok(timeZoneDtos);
         }
     }
 }

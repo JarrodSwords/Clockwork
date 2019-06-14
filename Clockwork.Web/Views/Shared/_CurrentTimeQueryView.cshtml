@@ -52,3 +52,39 @@
         {{ query.utcTime }}
     </span>
 </div>
+<hr v-if="query.timezoneId"/>
+<div v-if="query.timezoneId"
+     class="row">
+    <span class="
+          col-4
+          col-md-2
+          col-lg-1
+          d-inline-block
+          font-weight-bold
+          text-right">
+        Timezone:
+    </span>
+    <span class="
+          col-8
+          col-md-2
+          col-lg-1
+          d-inline-block">
+        {{ query.timezoneId }}
+    </span>
+    <span class="
+          col-4
+          col-md-2
+          col-lg-1
+          d-inline-block
+          font-weight-bold
+          text-right">
+        Time:
+    </span>
+    <span class="
+          col-8
+          col-md-10
+          col-lg-2
+          d-inline-block">
+        {{ query.convertedTime }}
+    </span>
+</div>

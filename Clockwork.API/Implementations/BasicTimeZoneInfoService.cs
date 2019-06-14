@@ -1,10 +1,9 @@
-﻿using Clockwork.API.Domain;
-using Clockwork.API.Services;
+﻿using Clockwork.API.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Clockwork.API.Storage
+namespace Clockwork.API.Implementations
 {
     public class BasicTimeZoneInfoService : ITimeZoneInfoService
     {
@@ -14,7 +13,7 @@ namespace Clockwork.API.Storage
                 .SingleOrDefault(x => x.Id == id);
         }
 
-        public ICollection<TimeZoneInfo> Get()
+        public ICollection<TimeZoneInfo> FetchAll()
         {
             return TimeZoneInfo.GetSystemTimeZones()
                 .ToList();

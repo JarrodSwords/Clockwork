@@ -22,17 +22,17 @@ namespace Clockwork.API.Storage
                 return query;
             }
         }
+        
+        public ICollection<CurrentTimeQuery> FetchAll()
+        {
+            using (var db = new ClockworkContext())
+                return db.CurrentTimeQueries.ToList();
+        }
 
         public CurrentTimeQuery Find(int id)
         {
             using (var db = new ClockworkContext())
                 return db.CurrentTimeQueries.Find(id);
-        }
-
-        public ICollection<CurrentTimeQuery> Get()
-        {
-            using (var db = new ClockworkContext())
-                return db.CurrentTimeQueries.ToList();
         }
     }
 }

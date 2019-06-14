@@ -1,16 +1,27 @@
 ﻿<div id="app">
-    <button type="submit"
-            class="btn btn-primary"
-            onclick="getCurrentTime()">
-        Get the time
-    </button>
-    
-    <select v-model="selectedTimezone">
-        <option v-for="option in timezoneOptions"
-                v-bind:value="option.value">
-            {{ option.text }}
-        </option>
-    </select>
+    <div class="text-right">
+        <button type="submit"
+                class="btn btn-primary"
+                onclick="getCurrentTime()">
+            Get time
+        </button>
+    </div>
+
+    <hr />
+
+    <div class="text-right">
+        <select v-model="selectedTimezone">
+            <option v-for="option in timezoneOptions"
+                    v-bind:value="option.value">
+                {{ option.text }}
+            </option>
+        </select>
+        <button type="submit"
+                class="btn btn-primary"
+                onclick="getCurrentTimeForTimezone()">
+            Get time for timezone
+        </button>
+    </div>
 
     <hr />
 
@@ -33,6 +44,6 @@
 <script src="~/Scripts/xhttprequest.js"></script>
 <script src="~/Scripts/models/current-time-query.js"></script>
 <script src="~/Scripts/models/timezone-option.js"></script>
-<script src="~/Scripts/services/currentTimeQueriesService.js"></script>
+<script src="~/Scripts/services/current-time-queries-service.js"></script>
 <script src="~/Scripts/services/timezones-service.js"></script>
-<script src="~/Scripts/apps/currentTimeQueriesApp.js"></script>
+<script src="~/Scripts/apps/current-time-queries-app.js"></script>

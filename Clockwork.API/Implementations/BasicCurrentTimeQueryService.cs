@@ -8,18 +8,18 @@ namespace Clockwork.API.Implementations
 {
     public class BasicCurrentTimeQueryService : ICurrentTimeQueryService
     {
-        private readonly ICurrentTimeQueryRepository _repository;
         private readonly IMapper _mapper;
+        private readonly ICurrentTimeQueryRepository _repository;
 
-        public BasicCurrentTimeQueryService(ICurrentTimeQueryRepository repository, IMapper mapper)
+        public BasicCurrentTimeQueryService(IMapper mapper, ICurrentTimeQueryRepository repository)
         {
-            _repository = repository;
             _mapper = mapper;
+            _repository = repository;
         }
 
         public ICollection<CurrentTimeQueryDto> GetAllRequests()
         {
-            return _repository.Get()
+            return _repository.FetchAll()
                 .Select(x => _mapper.Map(x))
                 .ToList();
         }

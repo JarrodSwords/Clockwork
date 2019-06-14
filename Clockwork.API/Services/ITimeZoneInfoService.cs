@@ -14,6 +14,6 @@ namespace Clockwork.API.Services
     public interface ITimeZoneInfoService
     {
         TimeZoneInfo Find(string id);
-        ICollection<TimeZoneInfo> Get();
+        ICollection<TimeZoneInfo> FetchAll();
     }
 }
