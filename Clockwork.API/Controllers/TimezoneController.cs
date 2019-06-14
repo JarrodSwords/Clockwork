@@ -2,18 +2,29 @@
 using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
+using Clockwork.API.Services;
+using Clockwork.API.Domain;
 
 namespace Clockwork.API.Controllers
 {
     [Route("api/[controller]")]
     public class TimezonesController : Controller
     {
+        private readonly IMapper _mapper;
+        private readonly ITimeZoneInfoService _timeZoneInfoService;
+
+        public TimezonesController(IMapper mapper, ITimeZoneInfoService timeZoneInfoService)
+        {
+            _mapper = mapper;
+            _timeZoneInfoService = timeZoneInfoService;
+        }
+
         // GET api/timezones
         [HttpGet]
         public IActionResult Get()
         {
-            var timezones = TimeZoneInfo.GetSystemTimeZones()
-                .Select(x => PrimitiveMapper.Map(x))
+            var timezones = _timeZoneInfoService.Get()
+                .Select(x => _mapper.Map(x))
                 .ToList();
 
             return Ok(timezones);

@@ -7,7 +7,7 @@ using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
-using Clockwork.API.Models;
+using Clockwork.API.Domain;
 
 namespace Clockwork.API
 {

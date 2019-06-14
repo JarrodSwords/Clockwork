@@ -1,11 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
-namespace Clockwork.API.Models
+namespace Clockwork.API.Domain
 {
     public class ClockworkContext : DbContext
     {
         public DbSet<CurrentTimeQuery> CurrentTimeQueries { get; set; }
-        public DbSet<TimezoneQuery> TimezoneQueries { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
