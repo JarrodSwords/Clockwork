@@ -1,10 +1,21 @@
 ﻿<!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <title>@ViewBag.Title</title>
     <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="~/Content/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/Content/style/base.css" />
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Lato" />
+    <script src="~/Scripts/jquery-3.0.0.slim.min.js"></script>
+    <script src="~/Scripts/popper.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/moment.min.js"></script>
 </head>
 <body>
-	@RenderBody()
+    @Html.Partial("_HeaderView")
+    <div class="container-fluid">
+        @RenderBody()
+    </div>
 </body>
 </html>

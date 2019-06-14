@@ -1,21 +1,49 @@
-﻿<script>
-function UserAction() {
-    var xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-            document.getElementById("output").innerHTML = this.responseText;
-        }
-    };
-    xhttp.open("GET", "http://127.0.0.1:5000/api/currenttime", true);
-    xhttp.setRequestHeader("Content-type", "application/json");
-    xhttp.send();
+﻿<div id="app">
+    <div class="text-right">
+        <button type="submit"
+                class="btn btn-primary"
+                onclick="getCurrentTime()">
+            Get time
+        </button>
+    </div>
 
-}
-</script>
+    <hr />
 
-<h2>AWH Clockwork Project @ViewData["Version"] on @ViewData["Runtime"]!</h2>
+    <div class="text-right">
+        <select v-model="selectedTimezone">
+            <option v-for="option in timezoneOptions"
+                    v-bind:value="option.value">
+                {{ option.text }}
+            </option>
+        </select>
+        <button type="submit"
+                class="btn btn-primary"
+                onclick="getCurrentTimeForTimezone()">
+            Get time for timezone
+        </button>
+    </div>
 
+    <hr />
 
-<button type="submit" onclick="UserAction()">Get the time</button>
+    <div id="current-time-queries"
+         class="card">
+        <h4 class="card-header text-uppercase">
+            Current Time Requests
+        </h4>
+        <ol class="list-group list-group-flush"
+            reversed>
+            <li v-for="query in queries.slice().reverse()"
+                class="list-group-item">
+                @Html.Partial("_CurrentTimeQueryView")
+            </li>
+        </ol>
+    </div>
+</div>
 
-<p id="output"></p>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.22/dist/vue.js"></script>
+<script src="~/Scripts/xhttprequest.js"></script>
+<script src="~/Scripts/models/current-time-query.js"></script>
+<script src="~/Scripts/models/timezone-option.js"></script>
+<script src="~/Scripts/services/current-time-queries-service.js"></script>
+<script src="~/Scripts/services/timezones-service.js"></script>
+<script src="~/Scripts/apps/current-time-queries-app.js"></script>
